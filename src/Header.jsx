@@ -16,14 +16,26 @@ export const Header = ({ onMenuToggle, isMenuOpen }) => (
         zIndex: 1000,
         pointerEvents: 'none'
     }}>
-        <div style={{ pointerEvents: 'auto' }}>
+        <div style={{
+            pointerEvents: 'auto',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem',
+        }}>
+            <img
+                src="/mercelk_logo.png"
+                alt="Logo"
+                width={90}
+                height={90}
+            />
             <h1 style={{
                 fontFamily: '"Montserrat", sans-serif',
-                fontSize: '1.5rem',
+                fontSize: '1.7rem',
                 fontWeight: '700',
                 color: COLORS.darkRed,
                 margin: 0,
-                letterSpacing: '3px'
+                letterSpacing: '3px',
+                lineHeight: 1.1,
             }}>MERCELK TOURS</h1>
         </div>
 
