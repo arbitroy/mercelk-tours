@@ -20,8 +20,8 @@ export const Header = ({ onMenuToggle, isMenuOpen }) => (
             <h1 style={{
                 fontFamily: '"Montserrat", sans-serif',
                 fontSize: '1.5rem',
-                fontWeight: '300',
-                color: COLORS.sage,
+                fontWeight: '700',
+                color: COLORS.darkRed,
                 margin: 0,
                 letterSpacing: '3px'
             }}>MERCELK TOURS</h1>
@@ -37,8 +37,8 @@ export const Header = ({ onMenuToggle, isMenuOpen }) => (
                 background: 'transparent',
                 border: 'none',
                 cursor: 'pointer',
-                color: isMenuOpen ? COLORS.darkRed : COLORS.sage,
-                fontWeight: '300',
+                color: COLORS.darkRed,
+                fontWeight: '700',
                 fontSize: '1rem',
                 fontFamily: '"Montserrat", sans-serif',
                 transition: 'color 0.3s'
