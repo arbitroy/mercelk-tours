@@ -1,7 +1,7 @@
 import { COLORS } from './COLORS';
 
 // Tour Card Component
-export const TourCard = ({ tour }) => (
+export const TourCard = ({ tour, onViewDetails }) => (
     <div style={{
         position: 'relative',
         height: '500px',
@@ -64,18 +64,30 @@ export const TourCard = ({ tour }) => (
                 fontFamily: '"Montserrat", sans-serif',
                 marginBottom: '1rem'
             }}>{tour.itinerary}</p>
-            <button style={{
-                background: COLORS.sage,
-                color: COLORS.darkRed,
-                border: 'none',
-                padding: '0.75rem 2rem',
-                borderRadius: '25px',
-                cursor: 'pointer',
-                fontSize: '1rem',
-                fontFamily: '"Montserrat", sans-serif',
-                fontWeight: '400',
-                alignSelf: 'flex-start'
-            }}>
+            <button 
+                onClick={onViewDetails}
+                style={{
+                    background: COLORS.sage,
+                    color: COLORS.darkRed,
+                    border: 'none',
+                    padding: '0.75rem 2rem',
+                    borderRadius: '25px',
+                    cursor: 'pointer',
+                    fontSize: '1rem',
+                    fontFamily: '"Montserrat", sans-serif',
+                    fontWeight: '400',
+                    alignSelf: 'flex-start',
+                    transition: 'all 0.3s'
+                }}
+                onMouseEnter={(e) => {
+                    e.target.style.transform = 'scale(1.05)';
+                    e.target.style.boxShadow = '0 4px 15px rgba(205,202,150,0.4)';
+                }}
+                onMouseLeave={(e) => {
+                    e.target.style.transform = 'scale(1)';
+                    e.target.style.boxShadow = 'none';
+                }}
+            >
                 View Details
             </button>
         </div>
