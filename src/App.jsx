@@ -2,7 +2,7 @@ import { Globe, Instagram, Mail, MessageCircle, Phone, X } from 'lucide-react';
 import { useState } from 'react';
 import { AboutSection } from './AboutSection';
 import { COLORS, MENU_ITEMS, SOCIAL_ITEMS } from './COLORS';
-import { ContactForm } from './ContactForm';
+import { BookingForm } from './BookingForm'; // Changed from ContactForm
 import { ExcursionsSection } from './ExcursionsSection';
 import { GallerySection } from './GallerySection';
 import { Header } from './Header';
@@ -70,7 +70,7 @@ const ContactSection = () => (
         fontFamily: '"Montserrat", sans-serif',
         marginBottom: '2rem',
         fontWeight: '300'
-      }}>Get In Touch</h2>
+      }}>Contact & Booking</h2>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -128,7 +128,7 @@ const ContactSection = () => (
       alignItems: 'center',
       justifyContent: 'center'
     }}>
-      <ContactForm />
+      <BookingForm />
     </div>
   </section>
 );

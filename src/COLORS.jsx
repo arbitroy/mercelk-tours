@@ -52,6 +52,28 @@ export const ROAD_TOURS = [
         ]
     },
     {
+        name: 'Scenic Kenya',
+        subtitle: 'Kenya Horizons',
+        days: '9 days, 8 nights',
+        image: 'https://images.unsplash.com/photo-1551009175-8a68da93d5f9?w=800',
+        itinerary: 'Nairobi → Samburu → Nyahururu → Lake Naivasha → Maasai Mara',
+        type: 'Safari by road',
+        operates: 'Daily on Request',
+        starts: 'Nairobi',
+        ends: 'Nairobi',
+        detailedItinerary: [
+            { day: 1, location: 'Nairobi', activities: 'Arrival at JKIA. Overnight in Nairobi.' },
+            { day: 2, location: 'Samburu/Buffalo Springs', activities: 'Drive to Samburu. Afternoon game drive in this unique northern reserve.' },
+            { day: 3, location: 'Samburu/Buffalo Springs', activities: 'Full-day exploration. Spot the "Samburu Special Five" and enjoy the Ewaso Nyiro River scenery.' },
+            { day: 4, location: 'Nyahururu', activities: 'Drive to Nyahururu. Visit Thomson\'s Falls, one of Kenya\'s most spectacular waterfalls.' },
+            { day: 5, location: 'Lake Naivasha', activities: 'Transfer to Lake Naivasha. Boat ride and optional walking safari at Crescent Island.' },
+            { day: 6, location: 'Maasai Mara', activities: 'Scenic drive through the Great Rift Valley to Maasai Mara. Evening game drive.' },
+            { day: 7, location: 'Maasai Mara', activities: 'Full-day game viewing in the Mara. Optional hot air balloon safari and Maasai village visit.' },
+            { day: 8, location: 'Maasai Mara', activities: 'Another day of game drives in different sections of the reserve. Witness incredible wildlife.' },
+            { day: 9, location: 'Nairobi', activities: 'Morning game drive, then return to Nairobi for departure.' }
+        ]
+    },
+    {
         name: 'Peaks & Plains',
         subtitle: 'Kenya in Focus',
         days: '7 days, 6 nights',
@@ -105,8 +127,7 @@ export const ROAD_TOURS = [
             { day: 3, location: 'Maasai Mara', activities: 'Full-day game viewing in the Mara. Optional cultural visit to Maasai village.' },
             { day: 4, location: 'Lake Nakuru/Elementaita', activities: 'Transfer to Lake Nakuru. Afternoon game drive around the lake.' },
             { day: 5, location: 'Amboseli', activities: 'Drive to Amboseli National Park. Game drive with views of Mt. Kilimanjaro.' },
-            { day: 6, location: 'Amboseli', activities: 'Morning game drive, then return to Nairobi.' },
-            { day: 7, location: 'Nairobi (Depart)', activities: 'Transfer to airport for departure.' }
+            { day: 6, location: 'Nairobi', activities: 'Morning game drive, then return to Nairobi for departure.' }
         ]
     }
 ];
@@ -127,8 +148,23 @@ export const AIR_TOURS = [
             { day: 3, location: 'Amboseli', activities: 'Full-day exploring Amboseli\'s elephant herds and diverse wildlife.' },
             { day: 4, location: 'Samburu', activities: 'Flight to Samburu. Game drive in this unique northern ecosystem.' },
             { day: 5, location: 'Samburu', activities: 'Full-day game viewing. Spot rare species found only in northern Kenya.' },
-            { day: 6, location: 'Maasai Mara', activities: 'Flight to Maasai Mara. Afternoon game drive in Kenya\'s most famous reserve.' },
-            { day: 7, location: 'Maasai Mara', activities: 'Morning game drive, then flight back to Nairobi for departure.' }
+            { day: 6, location: 'Maasai Mara', activities: 'Flight to Maasai Mara. Full-day of game drives, then evening flight back to Nairobi for departure.' }
+        ]
+    },
+    {
+        name: 'Kenya À La Carte',
+        subtitle: 'Customized Air Safari',
+        days: '3+ days (customizable)',
+        image: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=800',
+        itinerary: 'Customized itinerary to your preferred destinations',
+        type: 'Safari by air',
+        operates: 'Daily on Request',
+        starts: 'Nairobi',
+        ends: 'Nairobi',
+        detailedItinerary: [
+            { day: 1, location: 'Nairobi', activities: 'Arrival and consultation on your preferred destinations.' },
+            { day: 2, location: 'Your Choice', activities: 'Flight to your selected destination (Samburu, Amboseli, Maasai Mara, Laikipia, Lewa, or Ol Pejeta).' },
+            { day: 3, location: 'Your Choice', activities: 'Game drives and activities at your chosen destination.' }
         ]
     }
 ];
