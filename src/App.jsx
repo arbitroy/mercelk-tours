@@ -10,6 +10,7 @@ import { HeroSection } from './HeroSection';
 import { MenuPanel } from './MenuPanel';
 import { ToursSection } from './ToursSection';
 import { Footer } from './Footer';
+import { ServicesSection } from './ServicesSection';
 
 // Lightbox Component
 const Lightbox = ({ image, onClose }) => {
@@ -152,7 +153,7 @@ const MercelkTours = () => {
         <AboutSection />
         <ToursSection />
         <ExcursionsSection />
-        <GallerySection onImageClick={setLightboxImage} />
+        <ServicesSection />
         <ContactSection />
         <Footer />
 

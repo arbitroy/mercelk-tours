@@ -10,7 +10,7 @@ export const MENU_ITEMS = [
     { label: 'Home', link: '#hero' },
     { label: 'About', link: '#about' },
     { label: 'Tours', link: '#tours' },
-    { label: 'Gallery', link: '#gallery' },
+    { label: 'Services', link: '#services' }, // Changed from Gallery
     { label: 'Contact', link: '#contact' }
 ];
 export const SOCIAL_ITEMS = [
