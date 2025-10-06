@@ -54,87 +54,16 @@ const Lightbox = ({ image, onClose }) => {
 // Contact Section Component
 const ContactSection = () => (
   <section id="contact" style={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-    minHeight: '600px'
+    background: COLORS.sage,
+    padding: '6rem 2rem',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: '100vh'
   }}>
-    <div style={{
-      background: COLORS.darkRed,
-      padding: '4rem 3rem',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center'
-    }}>
-      <h2 style={{
-        fontSize: '3rem',
-        color: COLORS.sage,
-        fontFamily: '"Montserrat", sans-serif',
-        marginBottom: '2rem',
-        fontWeight: '300'
-      }}>Contact & Booking</h2>
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <Phone size={24} color={COLORS.sage} />
-          <div>
-            <p style={{ color: COLORS.sage, margin: 0, fontSize: '0.9rem', fontFamily: '"Montserrat", sans-serif', opacity: 0.8 }}>Phone</p>
-            <a href="tel:+254748937141" style={{ color: COLORS.sage, fontSize: '1.2rem', fontFamily: '"Montserrat", sans-serif', textDecoration: 'none' }}>+254 748 937 141</a>
-          </div>
-        </div>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <Mail size={24} color={COLORS.sage} />
-          <div>
-            <p style={{ color: COLORS.sage, margin: 0, fontSize: '0.9rem', fontFamily: '"Montserrat", sans-serif', opacity: 0.8 }}>Email</p>
-            <a href="mailto:mercelktours@gmail.com" style={{ color: COLORS.sage, fontSize: '1.2rem', fontFamily: '"Montserrat", sans-serif', textDecoration: 'none' }}>mercelktours@gmail.com</a>
-          </div>
-        </div>
-
-        <div style={{ marginTop: '2rem' }}>
-          <p style={{ color: COLORS.sage, marginBottom: '1rem', fontSize: '1.1rem', fontFamily: '"Montserrat", sans-serif' }}>Connect With Us</p>
-          <div style={{ display: 'flex', gap: '1.5rem' }}>
-            <a href="https://www.instagram.com/mercelktours/" target="_blank" rel="noopener noreferrer" style={{
-              color: COLORS.sage,
-              transition: 'transform 0.3s'
-            }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.2)'}
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-              <Instagram size={28} />
-            </a>
-            <a href="https://wa.me/254748937141" target="_blank" rel="noopener noreferrer" style={{
-              color: COLORS.sage,
-              transition: 'transform 0.3s'
-            }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.2)'}
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-              <MessageCircle size={28} />
-            </a>
-            <a href="https://community-si.com/en/public/profile/mercelk-tours" target="_blank" rel="noopener noreferrer" style={{
-              color: COLORS.sage,
-              transition: 'transform 0.3s'
-            }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.2)'}
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-              <Globe size={28} />
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div style={{
-      background: COLORS.sage,
-      padding: '4rem 3rem',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    }}>
-      <BookingForm />
-    </div>
+    <BookingForm />
   </section>
 );
-
-
 
 // ============= MAIN APP =============
 const MercelkTours = () => {
