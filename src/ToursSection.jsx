@@ -4,7 +4,7 @@ import { TourCard } from './TourCard';
 import { TourDetailModal } from './TourDetailModal';
 
 // Tours Section Component
-export const ToursSection = () => {
+export const ToursSection = ({ PatternBackground }) => {
     const [activeTab, setActiveTab] = useState('road');
     const [selectedTour, setSelectedTour] = useState(null);
 
@@ -12,9 +12,21 @@ export const ToursSection = () => {
         <>
             <section id="tours" style={{
                 background: `linear-gradient(to bottom, ${COLORS.sage}, #fff)`,
-                padding: '6rem 2rem'
+                padding: '6rem 2rem',
+                position: 'relative',
+                overflow: 'hidden'
             }}>
-                <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+                {PatternBackground && (
+                    <div style={{
+                        position: 'absolute',
+                        inset: 0,
+                        zIndex: 0
+                    }}>
+                        <PatternBackground color={COLORS.darkRed} opacity={0.22} />
+                    </div>
+                )}
+                
+                <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
                     <h2 style={{
                         fontSize: '3.5rem',
                         color: COLORS.darkRed,

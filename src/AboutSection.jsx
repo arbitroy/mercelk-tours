@@ -1,19 +1,24 @@
 import { COLORS, CORE_VALUES } from './COLORS';
 
 // About Section Component
-export const AboutSection = () => (
+export const AboutSection = ({ PatternBackground }) => (
     <section id="about" style={{
         background: COLORS.sage,
         padding: '6rem 2rem',
-        position: 'relative'
+        position: 'relative',
+        overflow: 'hidden'
     }}>
+        {PatternBackground && <PatternBackground color={COLORS.darkRed} opacity={0.28} />}
+        
         <div style={{
             maxWidth: '1400px',
             margin: '0 auto',
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
             gap: '3rem',
-            alignItems: 'center'
+            alignItems: 'center',
+            position: 'relative',
+            zIndex: 1
         }}>
             <div style={{
                 position: 'relative',

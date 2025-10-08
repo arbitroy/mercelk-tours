@@ -1,14 +1,15 @@
 import { COLORS, MASONRY_IMAGES } from './COLORS';
 
 // Hero Section Component
-export const HeroSection = () => (
+export const HeroSection = ({ PatternBackground }) => (
     <section id="hero" style={{
         position: 'relative',
         height: '100vh',
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        background: COLORS.darkRed
     }}>
         <div style={{
             position: 'absolute',
@@ -37,6 +38,17 @@ export const HeroSection = () => (
                 </div>
             ))}
         </div>
+
+        {PatternBackground && (
+            <div style={{
+                position: 'absolute',
+                inset: 0,
+                zIndex: 5,
+                pointerEvents: 'none'
+            }}>
+                <PatternBackground color={COLORS.sage} opacity={0.15} />
+            </div>
+        )}
 
         <div style={{
             position: 'relative',

@@ -1,20 +1,34 @@
 import { COLORS } from './COLORS';
-import { Globe, Instagram, Mail, MessageCircle, Phone, X } from 'lucide-react';
+import { Globe, Instagram, MessageCircle } from 'lucide-react';
 
 // Footer Component
-export const Footer = () => (
+export const Footer = ({ PatternBackground }) => (
     <footer style={{
-        background:  COLORS.darkRed,
+        background: COLORS.darkRed,
         padding: '3rem 2rem',
-        color: COLORS.sage
+        color: COLORS.sage,
+        position: 'relative',
+        overflow: 'hidden'
     }}>
+        {PatternBackground && (
+            <div style={{
+                position: 'absolute',
+                inset: 0,
+                zIndex: 0
+            }}>
+                <PatternBackground color={COLORS.sage} opacity={0.18} />
+            </div>
+        )}
+        
         <div style={{
             maxWidth: '1400px',
             margin: '0 auto',
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
             gap: '2rem',
-            textAlign: 'center'
+            textAlign: 'center',
+            position: 'relative',
+            zIndex: 1
         }}>
             <div>
                 <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontFamily: '"Montserrat", sans-serif', fontWeight: '300' }}>Mercelk Tours</h3>
@@ -62,7 +76,9 @@ export const Footer = () => (
             textAlign: 'center',
             marginTop: '3rem',
             paddingTop: '2rem',
-            borderTop: `1px solid rgba(205,202,150,0.2)`
+            borderTop: `1px solid rgba(205,202,150,0.2)`,
+            position: 'relative',
+            zIndex: 1
         }}>
             <p style={{ opacity: 0.7, fontSize: '0.9rem', fontFamily: '"Montserrat", sans-serif', margin: 0 }}>
                 © {new Date().getFullYear()} Mercelk Tours. All rights reserved.

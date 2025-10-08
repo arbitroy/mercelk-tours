@@ -1,13 +1,24 @@
 import { COLORS, EXCURSIONS } from './COLORS';
 
 // Excursions Section Component
-export const ExcursionsSection = () => (
+export const ExcursionsSection = ({ PatternBackground }) => (
     <section style={{
         background: COLORS.darkRed,
         padding: '4rem 2rem',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        position: 'relative'
     }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+        {PatternBackground && (
+            <div style={{
+                position: 'absolute',
+                inset: 0,
+                zIndex: 0
+            }}>
+                <PatternBackground color={COLORS.sage} opacity={0.25} />
+            </div>
+        )}
+        
+        <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
             <h2 style={{
                 fontSize: '2.5rem',
                 color: COLORS.sage,
