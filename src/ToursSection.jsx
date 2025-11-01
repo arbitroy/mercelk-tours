@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { AIR_TOURS, COLORS, ROAD_TOURS } from './COLORS';
 import { TourCard } from './TourCard';
 import { TourDetailModal } from './TourDetailModal';
+import { AfricanPatternCircle } from './AfricanPatternCircle';
 
 // Tours Section Component
 export const ToursSection = ({ PatternBackground }) => {
@@ -16,6 +17,12 @@ export const ToursSection = ({ PatternBackground }) => {
                 position: 'relative',
                 overflow: 'hidden'
             }}>
+                <AfricanPatternCircle
+                    patternSrc="/pattern1_african.svg"
+                    position="left"
+                    size={500}
+                    opacity={0.9}
+                />
                 {PatternBackground && (
                     <div style={{
                         position: 'absolute',
@@ -25,7 +32,7 @@ export const ToursSection = ({ PatternBackground }) => {
                         <PatternBackground color={COLORS.darkRed} opacity={0.22} />
                     </div>
                 )}
-                
+
                 <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
                     <h2 style={{
                         fontSize: '3.5rem',
@@ -73,9 +80,9 @@ export const ToursSection = ({ PatternBackground }) => {
             </section>
 
             {selectedTour && (
-                <TourDetailModal 
-                    tour={selectedTour} 
-                    onClose={() => setSelectedTour(null)} 
+                <TourDetailModal
+                    tour={selectedTour}
+                    onClose={() => setSelectedTour(null)}
                 />
             )}
         </>

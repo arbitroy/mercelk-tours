@@ -1,3 +1,4 @@
+import { AfricanPatternCircle } from './AfricanPatternCircle';
 import { COLORS, CORE_VALUES } from './COLORS';
 
 // About Section Component
@@ -8,8 +9,14 @@ export const AboutSection = ({ PatternBackground }) => (
         position: 'relative',
         overflow: 'hidden'
     }}>
+        <AfricanPatternCircle
+            patternSrc="/pattern2_african.svg"
+            position="right"
+            size={500}
+            opacity={0.9}
+        />
         {PatternBackground && <PatternBackground color={COLORS.darkRed} opacity={0.28} />}
-        
+
         <div style={{
             maxWidth: '1400px',
             margin: '0 auto',

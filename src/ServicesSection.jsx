@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { MapPin, Camera, Plane, Building2, Car, ArrowRight, Building, Hotel } from 'lucide-react';
 import { COLORS } from './COLORS';
+import { AfricanPatternCircle } from './AfricanPatternCircle';
 
 // Services data
 const SERVICES = [
@@ -279,6 +280,13 @@ export const ServicesSection = ({ PatternBackground }) => {
                 position: 'relative',
                 overflow: 'hidden'
             }}>
+
+                 <AfricanPatternCircle
+                  patternSrc="/pattern3_african.svg"
+                  position="right"
+                  size={500}
+                  opacity={0.9}
+                />
                 {PatternBackground && (
                     <div style={{
                         position: 'absolute',
