@@ -148,7 +148,8 @@ export const AIR_TOURS = [
             { day: 3, location: 'Amboseli', activities: 'Full-day exploring Amboseli\'s elephant herds and diverse wildlife.' },
             { day: 4, location: 'Samburu', activities: 'Flight to Samburu. Game drive in this unique northern ecosystem.' },
             { day: 5, location: 'Samburu', activities: 'Full-day game viewing. Spot rare species found only in northern Kenya.' },
-            { day: 6, location: 'Maasai Mara', activities: 'Flight to Maasai Mara. Full-day of game drives, then evening flight back to Nairobi for departure.' }
+            { day: 6, location: 'Maasai Mara', activities: 'Flight to Maasai Mara. Full-day of game drives and optional hot air balloon ride.' },
+            { day: 7, location: 'Departure' , activities: 'Flight back to Nairobi for departure.' }
         ]
     },
     {
@@ -162,7 +163,7 @@ export const AIR_TOURS = [
         starts: 'Nairobi',
         ends: 'Nairobi',
         detailedItinerary: [
-            { day: 1, location: 'Nairobi', activities: 'Arrival and consultation on your preferred destinations.' },
+            { day: 1, location: 'Nairobi', activities: 'Arrival on your preferred destinations and overnight stay in Nairobi.' },
             { day: 2, location: 'Your Choice', activities: 'Flight to your selected destination (Samburu, Amboseli, Maasai Mara, Laikipia, Lewa, or Ol Pejeta).' },
             { day: 3, location: 'Your Choice', activities: 'Game drives and activities at your chosen destination.' }
         ]
@@ -172,7 +173,9 @@ export const EXCURSIONS = [
     { name: 'Hot Air Ballooning', location: 'Maasai Mara & Amboseli', image: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=600' },
     { name: 'Out of Africa Experience', location: 'Karen Blixen & Giraffe Centre', image: 'https://images.unsplash.com/photo-1549366021-9f761d450615?w=600' },
     { name: 'Nairobi Museums', location: 'Cultural Heritage Tours', image: 'https://images.unsplash.com/photo-1551009175-8a68da93d5f9?w=600' },
-    { name: 'Nairobi National Park', location: 'Wildlife in the City', image: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600' }
+    { name: 'Nairobi National Park', location: 'Wildlife in the City', image: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600' },
+    { name: 'Daphne Sheldrick', location: 'Rescue & rehab center for orphaned elephants in Nairobi', image: '/image.png' },
+    { name: 'Reteti sanctuary', location: 'Samburu community owned and run wildlife sanctuary in Northern Kenya', image: 'https://lh3.googleusercontent.com/p/AF1QipMfnIfxEoF0NONty7-Zi4K5VXHw9ug9oAJQi-MB=s680-w680-h510-rw' }
 ];
 export const GALLERY_IMAGES = [
     'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200',

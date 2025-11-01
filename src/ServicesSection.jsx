@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { MapPin, Camera, Plane, Building2, Car, ArrowRight } from 'lucide-react';
+import { MapPin, Camera, Plane, Building2, Car, ArrowRight, Building, Hotel } from 'lucide-react';
 import { COLORS } from './COLORS';
 
 // Services data
@@ -9,7 +9,7 @@ const SERVICES = [
         title: 'Safari',
         subtitle: 'Thrilling Wildlife Adventures',
         description: 'Embark on thrilling wildlife adventures across Kenya\'s iconic parks and reserves.',
-        features: ['Expert Guides', '4x4 Land Cruiser', 'Custom Itinerary', 'Park Permits'],
+        features: ['Expert Guides', '4x4 Land Cruiser', 'Custom Itinerary', 'Park Permits', 'Meet & Greet'],
         icon: Camera,
         image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200',
         gridArea: 'safari',
@@ -53,6 +53,16 @@ const SERVICES = [
         icon: Car,
         image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800',
         gridArea: 'transfers',
+        size: 'small'
+    },
+    {
+        id: 'booking',
+        title: 'Hotel Booking',
+        subtitle: 'Comfortable Stays',
+        description: 'Find and book the best hotels for your stay in Kenya.',
+        icon: Hotel,
+        image: 'https://southamericatourism.com/wp-content/uploads/2019/05/Luxury-hotels-in-the-middle-of-nowhere_TierraAtacama1_1400x1000.jpg',
+        gridArea: 'booking',
         size: 'small'
     }
 ];
@@ -229,9 +239,9 @@ export const ServicesSection = ({ PatternBackground }) => {
                   grid-template-rows: 350px 350px 250px;
                   grid-template-areas:
                     "safari safari excursions excursions"
-                    "safari safari day-tours day-tours"
-                    "city-tours transfers day-tours day-tours";
-                  gap: 1.5rem;
+                    "safari safari   day-tours booking"
+                    "transfers city-tours day-tours booking";
+                  gap: 1.3rem;
                   width: 100%;
                   max-width: 1400px;
                   margin: 0 auto;
@@ -257,6 +267,7 @@ export const ServicesSection = ({ PatternBackground }) => {
                       "excursions"
                       "day-tours"
                       "city-tours"
+                      "booking"
                       "transfers";
                   }
                 }
