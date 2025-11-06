@@ -40,76 +40,114 @@ const calculateProgress = (formData) => {
 };
 
 // Counter Component
+// Counter Component - IMPROVED VERSION
 const Counter = ({ value, onChange, label, min = 0, max = 20 }) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
         <label style={{
             fontSize: '0.9rem',
             color: COLORS.brown,
             fontFamily: '"Montserrat", sans-serif',
-            fontWeight: '500',
-            opacity: 0.8
+            fontWeight: '600',
+            opacity: 0.9
         }}>{label}</label>
         <div style={{
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'space-between',
             gap: '1rem',
-            padding: '1rem 1.5rem',
-            border: '2px solid rgba(139,0,0,0.1)',
+            padding: '1.25rem 1.5rem',
+            border: '2px solid rgba(139,0,0,0.15)',
             borderRadius: '12px',
-            background: 'white',
-            transition: 'all 0.3s'
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(250,248,240,0.98) 100%)',
+            transition: 'all 0.3s',
+            boxShadow: '0 2px 6px rgba(0,0,0,0.06)'
         }}>
             <button
                 type="button"
                 onClick={() => onChange(Math.max(min, value - 1))}
                 disabled={value <= min}
                 style={{
-                    background: value <= min ? '#e0e0e0' : 'linear-gradient(135deg, #D4AF37 0%, #C9A961 100%)',
-                    color: 'white',
+                    background: value <= min 
+                        ? 'linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%)' 
+                        : 'linear-gradient(135deg, #D4AF37 0%, #C9A961 100%)',
+                    color: value <= min ? '#999' : 'white',
                     border: 'none',
-                    width: '36px',
-                    height: '36px',
+                    width: '44px',
+                    height: '44px',
                     borderRadius: '50%',
                     cursor: value <= min ? 'not-allowed' : 'pointer',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    transition: 'all 0.3s',
-                    opacity: value <= min ? 0.5 : 1
+                    transition: 'all 0.3s ease',
+                    opacity: value <= min ? 0.6 : 1,
+                    boxShadow: value <= min ? 'none' : '0 4px 12px rgba(212, 175, 55, 0.3)',
+                    transform: value <= min ? 'scale(0.95)' : 'scale(1)'
+                }}
+                onMouseEnter={(e) => {
+                    if (value > min) {
+                        e.target.style.transform = 'scale(1.08)';
+                        e.target.style.boxShadow = '0 6px 16px rgba(212, 175, 55, 0.4)';
+                    }
+                }}
+                onMouseLeave={(e) => {
+                    if (value > min) {
+                        e.target.style.transform = 'scale(1)';
+                        e.target.style.boxShadow = '0 4px 12px rgba(212, 175, 55, 0.3)';
+                    }
                 }}
             >
-                <Minus size={18} />
+                <Minus size={20} strokeWidth={2.5} />
             </button>
-
+            
             <span style={{
-                fontSize: '1.5rem',
-                fontWeight: '600',
+                fontSize: '1.75rem',
+                fontWeight: '700',
                 color: COLORS.darkRed,
-                minWidth: '45px',
+                minWidth: '3.5rem',
                 textAlign: 'center',
-                fontFamily: '"Montserrat", sans-serif'
-            }}>{value}</span>
-
+                fontFamily: '"Montserrat", sans-serif',
+                letterSpacing: '-0.5px'
+            }}>
+                {value}
+            </span>
+            
             <button
                 type="button"
                 onClick={() => onChange(Math.min(max, value + 1))}
                 disabled={value >= max}
                 style={{
-                    background: value >= max ? '#e0e0e0' : 'linear-gradient(135deg, #D4AF37 0%, #C9A961 100%)',
-                    color: 'white',
+                    background: value >= max 
+                        ? 'linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%)' 
+                        : 'linear-gradient(135deg, #D4AF37 0%, #C9A961 100%)',
+                    color: value >= max ? '#999' : 'white',
                     border: 'none',
-                    width: '36px',
-                    height: '36px',
+                    width: '44px',
+                    height: '44px',
                     borderRadius: '50%',
                     cursor: value >= max ? 'not-allowed' : 'pointer',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    transition: 'all 0.3s',
-                    opacity: value >= max ? 0.5 : 1
+                    transition: 'all 0.3s ease',
+                    opacity: value >= max ? 0.6 : 1,
+                    boxShadow: value >= max ? 'none' : '0 4px 12px rgba(212, 175, 55, 0.3)',
+                    transform: value >= max ? 'scale(0.95)' : 'scale(1)'
+                }}
+                onMouseEnter={(e) => {
+                    if (value < max) {
+                        e.target.style.transform = 'scale(1.08)';
+                        e.target.style.boxShadow = '0 6px 16px rgba(212, 175, 55, 0.4)';
+                    }
+                }}
+                onMouseLeave={(e) => {
+                    if (value < max) {
+                        e.target.style.transform = 'scale(1)';
+                        e.target.style.boxShadow = '0 4px 12px rgba(212, 175, 55, 0.3)';
+                    }
                 }}
             >
-                <Plus size={18} />
+                <Plus size={20} strokeWidth={2.5} />
             </button>
         </div>
     </div>
@@ -190,6 +228,7 @@ export const BookingForm = () => {
         }
     }, [formData.startDate, formData.endDate]);
 
+    // WhatsApp submission handler
     const handleSubmit = () => {
         // Validation
         if (!formData.firstName || !formData.lastName || !formData.email ||
@@ -199,7 +238,38 @@ export const BookingForm = () => {
             return;
         }
 
-        console.log('Form submitted:', formData);
+        // Format message for WhatsApp
+        const whatsappMessage = `
+🦁 *NEW SAFARI BOOKING REQUEST* 🦁
+
+👤 *Personal Information:*
+Name: ${formData.firstName} ${formData.lastName}
+Email: ${formData.email}
+Phone: ${formData.phoneCode} ${formData.phoneNumber}
+
+🌍 *Safari Details:*
+Safari Type: ${formData.safariType}
+Tour Package: ${formData.tourPlan}
+Start Date: ${formData.startDate}
+End Date: ${formData.endDate}
+Duration: ${formData.duration}
+
+👥 *Guests:*
+Adults: ${formData.adults}
+Children: ${formData.kids}
+
+💬 *Message:*
+${formData.message || 'No special requests'}
+        `.trim();
+
+        // WhatsApp business number (replace with your actual WhatsApp number)
+        const whatsappNumber = '254700000000'; // Replace with your WhatsApp number
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+        
+        // Open WhatsApp
+        window.open(whatsappURL, '_blank');
+        
+        // Show success message
         setSubmitted(true);
 
         // Reset form after 3 seconds
@@ -283,7 +353,8 @@ export const BookingForm = () => {
                 }
 
                 .luxury-gradient {
-                    background: linear-gradient(135deg, rgba(205,202,150,0.05) 0%, rgba(139,0,0,0.05) 100%);
+                    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(250,248,240,0.95) 100%);
+                    backdrop-filter: blur(10px);
                 }
 
                 .form-section {
@@ -324,6 +395,100 @@ export const BookingForm = () => {
                     animation: fadeInSlide 0.4s ease-out;
                     box-shadow: 0 10px 40px rgba(139, 0, 0, 0.4);
                 }
+
+                /* MOBILE RESPONSIVE STYLES */
+                @media (max-width: 768px) {
+                    .form-container {
+                        padding: 1.5rem !important;
+                    }
+
+                    .form-section {
+                        padding: 1.5rem !important;
+                    }
+
+                    .form-grid {
+                        grid-template-columns: 1fr !important;
+                        gap: 1.25rem !important;
+                    }
+
+                    .phone-input-wrapper {
+                        flex-direction: column !important;
+                        gap: 1rem !important;
+                    }
+
+                    .phone-code-input {
+                        width: 100% !important;
+                        text-align: left !important;
+                    }
+
+                    .counter-grid {
+                        grid-template-columns: 1fr !important;
+                    }
+
+                    .submit-button {
+                        padding: 1.25rem 2rem !important;
+                        font-size: 1rem !important;
+                        width: 100% !important;
+                    }
+
+                    .submit-button svg {
+                        width: 18px !important;
+                        height: 18px !important;
+                    }
+
+                    .fixed-cta {
+                        bottom: 1rem !important;
+                        right: 1rem !important;
+                        left: 1rem !important;
+                        padding: 1rem 1.5rem !important;
+                        font-size: 0.95rem !important;
+                    }
+
+                    .section-title {
+                        font-size: 1.1rem !important;
+                    }
+
+                    .duration-buttons {
+                        grid-template-columns: repeat(2, 1fr) !important;
+                    }
+
+                    .progress-bar-container {
+                        margin-bottom: 1.5rem !important;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .form-container {
+                        padding: 1rem !important;
+                    }
+
+                    .form-section {
+                        padding: 1.25rem !important;
+                    }
+
+                    .section-title {
+                        font-size: 1rem !important;
+                    }
+
+                    .submit-button {
+                        padding: 1rem 1.5rem !important;
+                        font-size: 0.9rem !important;
+                    }
+
+                    .fixed-cta {
+                        padding: 0.875rem 1.25rem !important;
+                        font-size: 0.875rem !important;
+                    }
+
+                    .counter-wrapper {
+                        padding: 0.875rem 1rem !important;
+                    }
+
+                    .counter-button {
+                        width: 32px !important;
+                        height: 32px !important;
+                    }
+                }
             `}</style>
 
             {/* Fixed CTA Button */}
@@ -343,6 +508,7 @@ export const BookingForm = () => {
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
+                        justifyContent: 'center',
                         gap: '0.75rem',
                         transition: 'all 0.3s'
                     }}
@@ -360,7 +526,7 @@ export const BookingForm = () => {
                 </button>
             )}
 
-            <div ref={formRef} style={{
+            <div ref={formRef} className="form-container" style={{
                 width: '100%',
                 maxWidth: '900px',
                 margin: '0 auto',
@@ -370,159 +536,135 @@ export const BookingForm = () => {
             }}>
                 {submitted ? (
                     <div style={{
-                        background: 'white',
-                        padding: '4rem 3rem',
-                        borderRadius: '20px',
-                        border: '3px solid #D4AF37',
                         textAlign: 'center',
-                        animation: 'successPulse 0.6s ease-out',
-                        boxShadow: '0 20px 60px rgba(139,0,0,0.15)'
+                        padding: '4rem 2rem',
+                        animation: 'successPulse 2s ease-in-out infinite'
                     }}>
                         <div style={{
-                            width: '100px',
-                            height: '100px',
-                            background: 'linear-gradient(135deg, #D4AF37 0%, #C9A961 100%)',
+                            width: '80px',
+                            height: '80px',
                             borderRadius: '50%',
+                            background: 'linear-gradient(135deg, #D4AF37 0%, #C9A961 100%)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                             margin: '0 auto 2rem',
-                            animation: 'float 2s ease-in-out infinite'
+                            boxShadow: '0 10px 30px rgba(212, 175, 55, 0.4)'
                         }}>
-                            <Check size={50} color="white" strokeWidth={3} />
+                            <Check size={40} color="white" strokeWidth={3} />
                         </div>
-                        <h3 style={{
-                            fontSize: '2.5rem',
+                        <h2 style={{
+                            fontSize: '2rem',
                             color: COLORS.darkRed,
-                            marginBottom: '1rem',
                             fontFamily: '"Montserrat", sans-serif',
-                            fontWeight: '300'
-                        }}>Your Safari Awaits!</h3>
+                            fontWeight: '600',
+                            marginBottom: '1rem'
+                        }}>
+                            Booking Request Sent!
+                        </h2>
                         <p style={{
-                            fontSize: '1.2rem',
+                            fontSize: '1.1rem',
                             color: COLORS.brown,
                             fontFamily: '"Montserrat", sans-serif',
-                            lineHeight: '1.8',
-                            maxWidth: '500px',
-                            margin: '0 auto'
+                            lineHeight: '1.6'
                         }}>
-                            Thank you for choosing Mercelk Tours. Our safari experts will contact you within 24 hours to craft your perfect Kenyan adventure.
+                            Thank you for choosing Mercelk Tours! We'll get back to you shortly to confirm your safari adventure.
                         </p>
                     </div>
                 ) : (
-                    <div className="safari-pattern" style={{
-                        background: 'white',
-                        borderRadius: '20px',
-                        padding: '3rem',
-                        boxShadow: '0 20px 60px rgba(139,0,0,0.15)',
-                        border: `2px solid ${COLORS.sage}`,
-                        position: 'relative',
-                        overflow: 'hidden'
-                    }}>
-                        {/* Decorative Corner Accents */}
-                        <div style={{
-                            position: 'absolute',
-                            top: 0,
-                            right: 0,
-                            width: '150px',
-                            height: '150px',
-                            background: 'linear-gradient(135deg, rgba(212,175,55,0.1) 0%, transparent 100%)',
-                            borderRadius: '0 20px 0 100%'
-                        }} />
-                        <div style={{
-                            position: 'absolute',
-                            bottom: 0,
-                            left: 0,
-                            width: '150px',
-                            height: '150px',
-                            background: 'linear-gradient(135deg, transparent 0%, rgba(139,0,0,0.05) 100%)',
-                            borderRadius: '100% 0 20px 0'
-                        }} />
-
-                        {/* Hero Section */}
+                    <div>
+                        {/* Header */}
                         <div style={{
                             textAlign: 'center',
-                            marginBottom: '3rem',
-                            position: 'relative',
-                            zIndex: 1
+                            marginBottom: '3rem'
                         }}>
                             <h2 style={{
-                                fontSize: '3rem',
+                                fontSize: '2.5rem',
                                 color: COLORS.darkRed,
                                 fontFamily: '"Montserrat", sans-serif',
-                                marginBottom: '1rem',
-                                fontWeight: '300',
-                                letterSpacing: '1px'
-                            }}>Begin Your Journey</h2>
-
+                                fontWeight: '600',
+                                marginBottom: '0.5rem',
+                                background: 'linear-gradient(135deg, #8B0000 0%, #D4AF37 100%)',
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                                backgroundClip: 'text'
+                            }}>
+                                Book Your Safari Adventure
+                            </h2>
                             <p style={{
                                 fontSize: '1.1rem',
                                 color: COLORS.brown,
                                 fontFamily: '"Montserrat", sans-serif',
-                                opacity: 0.8,
-                                maxWidth: '600px',
-                                margin: '0 auto',
-                                lineHeight: '1.6'
+                                opacity: 0.8
                             }}>
-                                Share your details and let us craft an unforgettable safari experience tailored just for you
+                                Begin your journey to discover the wild beauty of Kenya
                             </p>
+                        </div>
 
-                            {/* Progress Bar */}
+                        {/* Progress Bar */}
+                        <div className="progress-bar-container" style={{
+                            marginBottom: '2rem',
+                            padding: '1.5rem',
+                            background: 'rgba(255, 255, 255, 0.95)',
+                            borderRadius: '12px',
+                            border: '1px solid rgba(139,0,0,0.15)',
+                            boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                        }}>
                             <div style={{
-                                marginTop: '2rem',
                                 display: 'flex',
+                                justifyContent: 'space-between',
                                 alignItems: 'center',
-                                gap: '1rem',
-                                justifyContent: 'center'
+                                marginBottom: '0.75rem'
                             }}>
-                                <div style={{
-                                    flex: 1,
-                                    maxWidth: '400px',
-                                    height: '6px',
-                                    background: 'rgba(139,0,0,0.1)',
-                                    borderRadius: '10px',
-                                    overflow: 'hidden',
-                                    position: 'relative'
-                                }}>
-                                    <div style={{
-                                        height: '100%',
-                                        width: `${progress}%`,
-                                        background: 'linear-gradient(90deg, #D4AF37 0%, #C9A961 50%, #D4AF37 100%)',
-                                        borderRadius: '10px',
-                                        transition: 'width 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-                                        backgroundSize: '200% 100%',
-                                        animation: progress > 0 ? 'shimmer 2s infinite' : 'none'
-                                    }} />
-                                </div>
                                 <span style={{
                                     fontSize: '0.9rem',
-                                    fontWeight: '600',
-                                    color: '#D4AF37',
                                     fontFamily: '"Montserrat", sans-serif',
-                                    minWidth: '45px'
-                                }}>{progress}%</span>
+                                    color: COLORS.brown,
+                                    fontWeight: '500'
+                                }}>
+                                    Booking Progress
+                                </span>
+                                <span style={{
+                                    fontSize: '1.1rem',
+                                    fontFamily: '"Montserrat", sans-serif',
+                                    color: COLORS.darkRed,
+                                    fontWeight: '600'
+                                }}>
+                                    {progress}%
+                                </span>
+                            </div>
+                            <div style={{
+                                width: '100%',
+                                height: '8px',
+                                background: 'rgba(139,0,0,0.2)',
+                                borderRadius: '10px',
+                                overflow: 'hidden'
+                            }}>
+                                <div style={{
+                                    width: `${progress}%`,
+                                    height: '100%',
+                                    background: 'linear-gradient(135deg, #D4AF37 0%, #C9A961 100%)',
+                                    borderRadius: '10px',
+                                    transition: 'width 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+                                    boxShadow: '0 2px 10px rgba(212, 175, 55, 0.4)'
+                                }} />
                             </div>
                         </div>
 
-                        <div style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '2rem',
-                            position: 'relative',
-                            zIndex: 1
-                        }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                             {/* Section 1: Personal Information */}
                             <div className="form-section luxury-gradient" style={{
                                 padding: '2rem',
                                 borderRadius: '12px',
-                                border: '1px solid rgba(139,0,0,0.1)'
+                                border: '1px solid rgba(139,0,0,0.15)',
+                                boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
                             }}>
-                                <h3 style={{
+                                <h3 className="section-title" style={{
                                     fontSize: '1.3rem',
                                     color: '#8B0000',
                                     fontFamily: '"Montserrat", sans-serif',
                                     marginBottom: '1.5rem',
-                                    fontWeight: '400',
+                                    fontWeight: '600',
                                     display: 'flex',
                                     alignItems: 'center',
                                     gap: '0.5rem'
@@ -537,7 +679,7 @@ export const BookingForm = () => {
                                     Personal Information
                                 </h3>
 
-                                <div style={{
+                                <div className="form-grid" style={{
                                     display: 'grid',
                                     gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
                                     gap: '1.5rem'
@@ -554,7 +696,7 @@ export const BookingForm = () => {
                                                 width: '100%',
                                                 padding: '1.5rem 1rem 0.5rem',
                                                 fontSize: '1rem',
-                                                border: `2px solid ${focusedField === 'firstName' ? '#D4AF37' : 'rgba(139,0,0,0.1)'}`,
+                                                border: `2px solid ${focusedField === 'firstName' ? '#D4AF37' : 'rgba(139,0,0,0.2)'}`,
                                                 borderRadius: '8px',
                                                 fontFamily: '"Montserrat", sans-serif',
                                                 background: 'white',
@@ -579,7 +721,7 @@ export const BookingForm = () => {
                                                 width: '100%',
                                                 padding: '1.5rem 1rem 0.5rem',
                                                 fontSize: '1rem',
-                                                border: `2px solid ${focusedField === 'lastName' ? '#D4AF37' : 'rgba(139,0,0,0.1)'}`,
+                                                border: `2px solid ${focusedField === 'lastName' ? '#D4AF37' : 'rgba(139,0,0,0.2)'}`,
                                                 borderRadius: '8px',
                                                 fontFamily: '"Montserrat", sans-serif',
                                                 background: 'white',
@@ -604,7 +746,7 @@ export const BookingForm = () => {
                                                 width: '100%',
                                                 padding: '1.5rem 1rem 0.5rem',
                                                 fontSize: '1rem',
-                                                border: `2px solid ${focusedField === 'email' ? '#D4AF37' : 'rgba(139,0,0,0.1)'}`,
+                                                border: `2px solid ${focusedField === 'email' ? '#D4AF37' : 'rgba(139,0,0,0.2)'}`,
                                                 borderRadius: '8px',
                                                 fontFamily: '"Montserrat", sans-serif',
                                                 background: 'white',
@@ -618,16 +760,17 @@ export const BookingForm = () => {
                                     </div>
 
                                     {/* Phone */}
-                                    <div style={{ position: 'relative', display: 'flex', gap: '0.5rem' }}>
+                                    <div className="phone-input-wrapper" style={{ position: 'relative', display: 'flex', gap: '0.5rem' }}>
                                         <input
                                             type="text"
                                             value={formData.phoneCode}
                                             onChange={(e) => setFormData({ ...formData, phoneCode: e.target.value })}
+                                            className="phone-code-input"
                                             style={{
                                                 width: '100px',
                                                 padding: '1rem',
                                                 fontSize: '1rem',
-                                                border: '2px solid rgba(139,0,0,0.1)',
+                                                border: '2px solid rgba(139,0,0,0.2)',
                                                 borderRadius: '8px',
                                                 fontFamily: '"Montserrat", sans-serif',
                                                 background: 'white',
@@ -646,7 +789,7 @@ export const BookingForm = () => {
                                                     width: '100%',
                                                     padding: '1.5rem 1rem 0.5rem',
                                                     fontSize: '1rem',
-                                                    border: `2px solid ${focusedField === 'phoneNumber' ? '#D4AF37' : 'rgba(139,0,0,0.1)'}`,
+                                                    border: `2px solid ${focusedField === 'phoneNumber' ? '#D4AF37' : 'rgba(139,0,0,0.2)'}`,
                                                     borderRadius: '8px',
                                                     fontFamily: '"Montserrat", sans-serif',
                                                     background: 'white',
@@ -666,14 +809,15 @@ export const BookingForm = () => {
                             <div className="form-section luxury-gradient" style={{
                                 padding: '2rem',
                                 borderRadius: '12px',
-                                border: '1px solid rgba(139,0,0,0.1)'
+                                border: '1px solid rgba(139,0,0,0.15)',
+                                boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
                             }}>
-                                <h3 style={{
+                                <h3 className="section-title" style={{
                                     fontSize: '1.3rem',
                                     color: '#8B0000',
                                     fontFamily: '"Montserrat", sans-serif',
                                     marginBottom: '1.5rem',
-                                    fontWeight: '400',
+                                    fontWeight: '600',
                                     display: 'flex',
                                     alignItems: 'center',
                                     gap: '0.5rem'
@@ -688,7 +832,7 @@ export const BookingForm = () => {
                                     Safari Experience
                                 </h3>
 
-                                <div style={{
+                                <div className="form-grid" style={{
                                     display: 'grid',
                                     gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
                                     gap: '1.5rem'
@@ -717,7 +861,7 @@ export const BookingForm = () => {
                                                 width: '100%',
                                                 padding: '1.5rem 1rem 0.5rem',
                                                 fontSize: '1rem',
-                                                border: `2px solid ${focusedField === 'safariType' ? '#D4AF37' : 'rgba(139,0,0,0.1)'}`,
+                                                border: `2px solid ${focusedField === 'safariType' ? '#D4AF37' : 'rgba(139,0,0,0.2)'}`,
                                                 borderRadius: '8px',
                                                 fontFamily: '"Montserrat", sans-serif',
                                                 background: 'white',
@@ -733,14 +877,14 @@ export const BookingForm = () => {
                                             }}
                                         >
                                             <option value="">Select...</option>
-                                            <option value="By Road">Safari By Road</option>
-                                            <option value="By Air">Safari By Air</option>
+                                            <option value="By Road">By Road</option>
+                                            <option value="By Air">By Air</option>
                                         </select>
                                     </div>
 
                                     {/* Tour Plan */}
                                     {formData.safariType && (
-                                        <div style={{ position: 'relative', animation: 'slideUp 0.4s ease-out' }}>
+                                        <div style={{ position: 'relative' }}>
                                             <label style={{
                                                 position: 'absolute',
                                                 left: '1rem',
@@ -763,7 +907,7 @@ export const BookingForm = () => {
                                                     width: '100%',
                                                     padding: '1.5rem 1rem 0.5rem',
                                                     fontSize: '1rem',
-                                                    border: `2px solid ${focusedField === 'tourPlan' ? '#D4AF37' : 'rgba(139,0,0,0.1)'}`,
+                                                    border: `2px solid ${focusedField === 'tourPlan' ? '#D4AF37' : 'rgba(139,0,0,0.2)'}`,
                                                     borderRadius: '8px',
                                                     fontFamily: '"Montserrat", sans-serif',
                                                     background: 'white',
@@ -779,47 +923,15 @@ export const BookingForm = () => {
                                                 }}
                                             >
                                                 <option value="">Select...</option>
-                                                <option value="maasai-mara-3-days">Maasai Mara Experience (3 Days)</option>
-                                                <option value="amboseli-3-days">Amboseli Safari (3 Days)</option>
-                                                <option value="coastal-experience">Coastal Experience (5 Days)</option>
-                                                <option value="customized">Customized Tour</option>
+                                                {TOUR_OPTIONS[formData.safariType]?.map(tour => (
+                                                    <option key={tour.value} value={tour.value}>
+                                                        {tour.label}
+                                                    </option>
+                                                ))}
                                             </select>
                                         </div>
                                     )}
-                                </div>
-                            </div>
 
-                            {/* Section 3: Travel Dates */}
-                            <div className="form-section luxury-gradient" style={{
-                                padding: '2rem',
-                                borderRadius: '12px',
-                                border: '1px solid rgba(139,0,0,0.1)'
-                            }}>
-                                <h3 style={{
-                                    fontSize: '1.3rem',
-                                    color: '#8B0000',
-                                    fontFamily: '"Montserrat", sans-serif',
-                                    marginBottom: '1.5rem',
-                                    fontWeight: '400',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem'
-                                }}>
-                                    <span style={{
-                                        width: '8px',
-                                        height: '8px',
-                                        background: '#D4AF37',
-                                        borderRadius: '50%',
-                                        display: 'inline-block'
-                                    }} />
-                                    Travel Dates
-                                </h3>
-
-                                <div style={{
-                                    display: 'grid',
-                                    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                                    gap: '1.5rem'
-                                }}>
                                     <div style={{ position: 'relative' }}>
                                         <label style={{
                                             position: 'absolute',
@@ -845,7 +957,7 @@ export const BookingForm = () => {
                                                 width: '100%',
                                                 padding: '1.5rem 1rem 0.5rem',
                                                 fontSize: '1rem',
-                                                border: `2px solid ${focusedField === 'startDate' ? '#D4AF37' : 'rgba(139,0,0,0.1)'}`,
+                                                border: `2px solid ${focusedField === 'startDate' ? '#D4AF37' : 'rgba(139,0,0,0.2)'}`,
                                                 borderRadius: '8px',
                                                 fontFamily: '"Montserrat", sans-serif',
                                                 background: 'white',
@@ -882,7 +994,7 @@ export const BookingForm = () => {
                                                 width: '100%',
                                                 padding: '1.5rem 1rem 0.5rem',
                                                 fontSize: '1rem',
-                                                border: `2px solid ${focusedField === 'endDate' ? '#D4AF37' : 'rgba(139,0,0,0.1)'}`,
+                                                border: `2px solid ${focusedField === 'endDate' ? '#D4AF37' : 'rgba(139,0,0,0.2)'}`,
                                                 borderRadius: '8px',
                                                 fontFamily: '"Montserrat", sans-serif',
                                                 background: 'white',
@@ -895,57 +1007,64 @@ export const BookingForm = () => {
                                     </div>
                                 </div>
 
+                                {/* Duration Suggestions */}
                                 {formData.startDate && (
-                                    <div style={{
-                                        marginTop: '1rem',
-                                        display: 'flex',
-                                        gap: '0.75rem',
-                                        flexWrap: 'wrap',
-                                        animation: 'slideUp 0.3s ease-out'
-                                    }}>
-                                        <span style={{
-                                            fontSize: '0.85rem',
-                                            color: '#6B4423',
+                                    <div style={{ marginTop: '1.5rem' }}>
+                                        <label style={{
+                                            display: 'block',
+                                            marginBottom: '0.75rem',
+                                            fontSize: '0.9rem',
+                                            color: COLORS.brown,
                                             fontFamily: '"Montserrat", sans-serif',
-                                            alignSelf: 'center',
-                                            opacity: 0.7
-                                        }}>Quick select:</span>
-                                        {[
-                                            { days: 3, label: '3 Days' },
-                                            { days: 5, label: '5 Days' },
-                                            { days: 7, label: '7 Days' },
-                                            { days: 9, label: '9 Days' }
-                                        ].map(({ days, label }) => (
-                                            <button
-                                                key={days}
-                                                type="button"
-                                                onClick={() => applyDuration(days)}
-                                                style={{
-                                                    padding: '0.5rem 1.25rem',
-                                                    fontSize: '0.85rem',
-                                                    background: 'white',
-                                                    border: '1px solid rgba(212,175,55,0.3)',
-                                                    borderRadius: '25px',
-                                                    cursor: 'pointer',
-                                                    fontFamily: '"Montserrat", sans-serif',
-                                                    color: '#D4AF37',
-                                                    fontWeight: '500',
-                                                    transition: 'all 0.3s'
-                                                }}
-                                                onMouseEnter={(e) => {
-                                                    e.target.style.background = 'linear-gradient(135deg, #D4AF37 0%, #C9A961 100%)';
-                                                    e.target.style.color = 'white';
-                                                    e.target.style.transform = 'translateY(-2px)';
-                                                }}
-                                                onMouseLeave={(e) => {
-                                                    e.target.style.background = 'white';
-                                                    e.target.style.color = '#D4AF37';
-                                                    e.target.style.transform = 'translateY(0)';
-                                                }}
-                                            >
-                                                {label}
-                                            </button>
-                                        ))}
+                                            fontWeight: '500',
+                                            opacity: 0.8
+                                        }}>
+                                            Quick Duration Select:
+                                        </label>
+                                        <div className="duration-buttons" style={{
+                                            display: 'grid',
+                                            gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
+                                            gap: '0.75rem'
+                                        }}>
+                                            {DURATION_SUGGESTIONS.map(({ days, label }) => (
+                                                <button
+                                                    key={days}
+                                                    type="button"
+                                                    onClick={() => applyDuration(days)}
+                                                    style={{
+                                                        padding: '0.75rem 1rem',
+                                                        fontSize: '0.9rem',
+                                                        background: formData.duration === `${days} days` ? 
+                                                            'linear-gradient(135deg, #D4AF37 0%, #C9A961 100%)' : 
+                                                            'white',
+                                                        color: formData.duration === `${days} days` ? 'white' : COLORS.brown,
+                                                        border: `2px solid ${formData.duration === `${days} days` ? '#D4AF37' : 'rgba(139,0,0,0.2)'}`,
+                                                        borderRadius: '8px',
+                                                        fontFamily: '"Montserrat", sans-serif',
+                                                        fontWeight: '500',
+                                                        cursor: 'pointer',
+                                                        transition: 'all 0.3s',
+                                                        whiteSpace: 'nowrap'
+                                                    }}
+                                                    onMouseEnter={(e) => {
+                                                        if (formData.duration !== `${days} days`) {
+                                                            e.target.style.borderColor = '#D4AF37';
+                                                            e.target.style.color = '#D4AF37';
+                                                            e.target.style.transform = 'translateY(-2px)';
+                                                        }
+                                                    }}
+                                                    onMouseLeave={(e) => {
+                                                        if (formData.duration !== `${days} days`) {
+                                                            e.target.style.borderColor = 'rgba(139,0,0,0.2)';
+                                                            e.target.style.color = COLORS.brown;
+                                                            e.target.style.transform = 'translateY(0)';
+                                                        }
+                                                    }}
+                                                >
+                                                    {label}
+                                                </button>
+                                            ))}
+                                        </div>
                                     </div>
                                 )}
                             </div>
@@ -954,14 +1073,15 @@ export const BookingForm = () => {
                             <div className="form-section luxury-gradient" style={{
                                 padding: '2rem',
                                 borderRadius: '12px',
-                                border: '1px solid rgba(139,0,0,0.1)'
+                                border: '1px solid rgba(139,0,0,0.15)',
+                                boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
                             }}>
-                                <h3 style={{
+                                <h3 className="section-title" style={{
                                     fontSize: '1.3rem',
                                     color: '#8B0000',
                                     fontFamily: '"Montserrat", sans-serif',
                                     marginBottom: '1.5rem',
-                                    fontWeight: '400',
+                                    fontWeight: '600',
                                     display: 'flex',
                                     alignItems: 'center',
                                     gap: '0.5rem'
@@ -976,7 +1096,7 @@ export const BookingForm = () => {
                                     Guests & Special Requests
                                 </h3>
 
-                                <div style={{
+                                <div className="counter-grid" style={{
                                     display: 'grid',
                                     gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
                                     gap: '1.5rem',
@@ -1007,7 +1127,7 @@ export const BookingForm = () => {
                                             width: '100%',
                                             padding: '1.5rem 1rem 0.5rem',
                                             fontSize: '1rem',
-                                            border: `2px solid ${focusedField === 'message' ? '#D4AF37' : 'rgba(139,0,0,0.1)'}`,
+                                            border: `2px solid ${focusedField === 'message' ? '#D4AF37' : 'rgba(139,0,0,0.2)'}`,
                                             borderRadius: '8px',
                                             fontFamily: '"Montserrat", sans-serif',
                                             background: 'white',
@@ -1027,6 +1147,7 @@ export const BookingForm = () => {
                             <button
                                 ref={submitButtonRef}
                                 onClick={handleSubmit}
+                                className="submit-button"
                                 style={{
                                     padding: '1.5rem 3rem',
                                     fontSize: '1.2rem',
@@ -1060,7 +1181,7 @@ export const BookingForm = () => {
                                 }}
                             >
                                 <Sparkles size={22} />
-                                Begin My Safari Adventure
+                                Send to WhatsApp
                                 <Sparkles size={22} />
                             </button>
                         </div>
@@ -1070,3 +1191,5 @@ export const BookingForm = () => {
         </>
     );
 };
+
+export default BookingForm;
