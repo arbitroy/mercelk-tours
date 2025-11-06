@@ -263,7 +263,7 @@ ${formData.message || 'No special requests'}
         `.trim();
 
         // WhatsApp business number (replace with your actual WhatsApp number)
-        const whatsappNumber = '254700000000'; // Replace with your WhatsApp number
+        const whatsappNumber = '254748937141'; // Replace with your WhatsApp number
         const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
         
         // Open WhatsApp
