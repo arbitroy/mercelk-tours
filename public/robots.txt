@@ -1,0 +1,28 @@
+# Mercelk Tours - robots.txt
+# This file tells search engines which pages they can and cannot crawl
+
+# Allow all search engines to crawl everything
+User-agent: *
+Allow: /
+
+# Sitemap location (update with your actual domain when you deploy)
+Sitemap: https://mercelktours.co.ke/sitemap.xml
+
+# Optional: If you have admin or private areas, uncomment and add them here
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow search engines to crawl images
+User-agent: Googlebot-Image
+Allow: /
+
+# Allow Googlebot to crawl everything
+User-agent: Googlebot
+Allow: /
+
+# Allow Bingbot to crawl everything
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay (optional - uncomment if search engines are crawling too aggressively)
+# Crawl-delay: 1
